@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oráculo D&D 2024 — Regras & Grimório com Gemini 3.5 Flash</title>
+  
+  <!-- Google Fonts: Cinzel (Fantasy/Epic) & Outfit/Inter (Modern UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Three.js 3D Engine for Realistic Dice Physics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Markdown parser library: marked.js -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-group">
+          <div class="d20-icon">🎲</div>
+          <div>
+            <h1 class="logo-title">D&D 2024</h1>
+            <span class="logo-sub">Oráculo de Regras RAG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Badge -->
+      <div class="system-status">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Gemini 3.5 Flash</span>
+        </div>
+        <div class="docs-count" id="docsCountBadge">
+          📚 Carregando acervo...
+        </div>
+      </div>
+
+      <!-- Quick Dice Roller -->
+      <div class="sidebar-section">
+        <h2 class="section-title">Rolador Rápido de Dados</h2>
+        <div class="dice-grid">
+          <button class="dice-btn" onclick="rollDie(4)">d4</button>
+          <button class="dice-btn" onclick="rollDie(6)">d6</button>
+          <button class="dice-btn" onclick="rollDie(8)">d8</button>
+          <button class="dice-btn" onclick="rollDie(10)">d10</button>
+          <button class="dice-btn" onclick="rollDie(12)">d12</button>
+          <button class="dice-btn d20-btn" onclick="rollDie(20)">d20</button>
+          <button class="dice-btn" onclick="rollDie(100)">d100</button>
+        </div>
+        <div class="dice-custom-row">
+          <input type="text" id="customDiceInput" placeholder="Ex: 2d6 + 3, 1d20 + 7" />
+          <button class="dice-roll-action-btn" onclick="rollCustomDice()">Rolar</button>
+        </div>
+        <button class="btn-open-tray-full" onclick="openDiceModal()">
+          🎲 Abrir Bandeja de Rolagem 3D
+        </button>
+        <div class="dice-result-box" id="diceResultBox" style="display:none;"></div>
+      </div>
+
+      <!-- Quick Query Suggestions -->
+      <div class="sidebar-section quick-queries">
+        <h2 class="section-title">Catálogos & Compêndio</h2>
+        <button class="chip-btn" style="border-color: rgba(245, 158, 11, 0.45); background: rgba(245, 158, 11, 0.08);" onclick="sendQuickPrompt('Liste os monstros existentes organizados por Nível de Desafio (ND)')">
+          🐉 <strong>Bestiário: 339 Monstros</strong>
+        </button>
+        <button class="chip-btn" style="border-color: rgba(147, 51, 234, 0.45); background: rgba(147, 51, 234, 0.08);" onclick="sendQuickPrompt('Liste as magias existentes organizadas por círculo e escola')">
+          🔮 <strong>Grimório: 326 Magias</strong>
+        </button>
+        <button class="chip-btn" onclick="sendQuickPrompt('Quais são as 12 classes e subclasses oficiais do D&D 2024?')">
+          ⚔️ <strong>12 Classes & Subclasses</strong>
+        </button>
+        <button class="chip-btn" style="border-color: rgba(56, 189, 248, 0.45); background: rgba(56, 189, 248, 0.08);" onclick="sendQuickPrompt('Liste as ferramentas (tools) e kits de artesão do D&D 2024 em uma tabela com habilidades e utilidade')">
+          🧰 <strong>Ferramentas & Kits</strong>
+        </button>
+        <button class="chip-btn" onclick="sendQuickPrompt('Liste as armas simples e marciais do D&D 2024 em uma tabela com dano, propriedades e custo')">
+          🗡️ <strong>Armas & Equipamentos</strong>
+        </button>
+        <button class="chip-btn" onclick="sendQuickPrompt('Liste todos os tipos de dano e condições do D&D 2024 em uma tabela com descrições')">
+          ⚡ <strong>Tipos de Dano & Condições</strong>
+        </button>
+
+        <h2 class="section-title" style="margin-top: 14px;">Consultas Rápidas de Regras</h2>
+        <button class="chip-btn" onclick="sendQuickPrompt('Como funciona a condição Caído (Prone) no combate do D&D 2024?')">
+          🛡️ Condição: Caído (Prone)
+        </button>
+        <button class="chip-btn" onclick="sendQuickPrompt('Quais são as ações e habilidades do temível Aboleth?')">
+          🐙 Monstro: Aboleth (ND 10)
+        </button>
+        <button class="chip-btn" onclick="sendQuickPrompt('Como funciona a magia Bola de Fogo (Fireball) e dano em área?')">
+          🔥 Magia: Bola de Fogo
+        </button>
+        <button class="chip-btn" onclick="sendQuickPrompt('Como funciona 0 PV, Testes de Morte e Morte Instantânea no D&D 2024?')">
+          💀 0 PV e Testes de Morte
+        </button>
+        <button class="chip-btn" onclick="sendQuickPrompt('Como funciona o Descanso Curto e Descanso Longo no D&D 2024?')">
+          ⛺ Regras de Descanso
+        </button>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <button class="btn-secondary" onclick="reindexRAG()">
+          🔄 Atualizar Índice RAG
+        </button>
+        <button class="btn-danger" onclick="clearChat()">
+          🗑️ Limpar Conversa
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Chat Workspace -->
+    <main class="chat-workspace">
+      <!-- Chat Header -->
+      <header class="chat-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle" onclick="toggleSidebar()">☰</button>
+          <div>
+            <h2 class="header-title">Grimório & Juiz de Regras</h2>
+            <p class="header-sub">Alimentado por RAG sobre as Regras Livres Oficiais de D&D (2024) com Google Gemini 3.5 Flash</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <span class="badge-gemini">⚡ Gemini 3.5 Flash</span>
+          <span class="badge-rag">🔍 RAG Ativo</span>
+        </div>
+      </header>
+
+      <!-- Messages Stream -->
+      <div class="messages-container" id="messagesContainer">
+        <!-- Welcome Hero Banner -->
+        <div class="welcome-card" id="welcomeCard">
+          <div class="welcome-emblem">⚔️</div>
+          <h3>Bem-vindo ao Oráculo de D&D 2024!</h3>
+          <p>
+            Consulte qualquer regra oficial de combate, dano e cura, magias, monstros, classes e equipamentos do 
+            livro <strong>Free Basic Rules (2024)</strong>. As respostas são recuperadas via <strong>RAG</strong> 
+            diretamente dos arquivos oficiais e sintetizadas pelo modelo <strong>Gemini 3.5 Flash</strong>.
+          </p>
+          <div class="welcome-chips">
+            <span class="pill" onclick="sendQuickPrompt('Quais são as ações permitidas em um turno de combate?')">Ações no Turno</span>
+            <span class="pill" onclick="sendQuickPrompt('Como funciona a magia Bola de Fogo?')">Bola de Fogo</span>
+            <span class="pill" onclick="sendQuickPrompt('Como funciona Ataque Furtivo (Sneak Attack) do Ladino?')">Ataque Furtivo</span>
+            <span class="pill" onclick="sendQuickPrompt('Quais as diferenças entre Resistência, Vulnerabilidade e Imunidade?')">Resistência a Dano</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <div class="input-wrapper">
+        <form class="chat-form" id="chatForm" onsubmit="handleSend(event)">
+          <textarea 
+            id="userInput" 
+            placeholder="Pergunte sobre qualquer regra, magia, monstro ou classe (ou digite /roll 1d20+5)..." 
+            rows="1"
+            onkeydown="handleKeyDown(event)"
+          ></textarea>
+          <button type="submit" id="sendBtn" class="send-btn" title="Enviar mensagem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </form>
+        <div class="input-hint">
+          Pressione <strong>Enter</strong> para enviar, <strong>Shift + Enter</strong> para quebra de linha. Digite <code>/roll [dado]</code> para rolagem de dados.
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Document Source Modal -->
+  <div class="modal-overlay" id="sourceModal" onclick="closeSourceModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 id="modalTitle">Visualizar Fonte</h3>
+        <button class="modal-close" onclick="closeSourceModal()">&times;</button>
+      </div>
+      <div class="modal-path" id="modalPath"></div>
+      <div class="modal-body markdown-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- 3D Realistic Dice Roll Modal -->
+  <div class="dice-modal-overlay" id="diceModal" onclick="closeDiceModal(event)">
+    <div class="dice-modal-card" onclick="event.stopPropagation()">
+      <div class="dice-modal-header">
+        <div class="dice-modal-title">
+          <span class="dice-title-icon">🎲</span>
+          <div>
+            <h3 id="diceModalHeading">Bandeja de Rolagem Física 3D</h3>
+            <span class="dice-modal-sub" id="diceModalSub">D&D 2024 Dice Arena</span>
+          </div>
+        </div>
+        <button class="dice-modal-close" onclick="closeDiceModal()">&times;</button>
+      </div>
+
+      <!-- 3D Canvas Arena -->
+      <div class="dice-arena-container">
+        <canvas id="diceCanvas"></canvas>
+        
+        <div class="dice-crit-banner" id="diceCritBanner" style="display:none;">
+          <span id="critBannerText">ACERTO CRÍTICO!</span>
+        </div>
+      </div>
+
+      <!-- Controls & Breakdown -->
+      <div class="dice-modal-controls">
+        <div class="dice-tray-toolbar">
+          <span class="toolbar-label">Adicionar Dados:</span>
+          <div class="tray-dice-buttons">
+            <button type="button" class="tray-btn" onclick="addDieToTray(4)">+ d4</button>
+            <button type="button" class="tray-btn" onclick="addDieToTray(6)">+ d6</button>
+            <button type="button" class="tray-btn" onclick="addDieToTray(8)">+ d8</button>
+            <button type="button" class="tray-btn" onclick="addDieToTray(10)">+ d10</button>
+            <button type="button" class="tray-btn" onclick="addDieToTray(12)">+ d12</button>
+            <button type="button" class="tray-btn tray-d20" onclick="addDieToTray(20)">+ d20</button>
+            <button type="button" class="tray-btn" onclick="addDieToTray(100)">+ d100</button>
+            <button type="button" class="tray-btn tray-clear" onclick="clearDiceTray()">Limpar</button>
+          </div>
+        </div>
+
+        <div class="dice-tray-action-bar">
+          <div class="tray-expression-box">
+            <span class="expr-label">Fórmula:</span>
+            <span class="expr-value" id="trayExprDisplay">1d20</span>
+          </div>
+          
+          <div class="tray-mod-box">
+            <label for="trayModInput">Mod:</label>
+            <input type="number" id="trayModInput" value="0" onchange="updateTrayModifier()" />
+          </div>
+
+          <button type="button" class="btn-roll-physics" id="btnRollPhysics" onclick="triggerPhysicsRoll()">
+            ⚡ Rolar Dados
+          </button>
+        </div>
+
+        <!-- Result Reveal Panel -->
+        <div class="dice-result-panel" id="diceResultPanel" style="display:none;">
+          <div class="result-details">
+            <div class="result-rolls" id="resultRollsList"></div>
+            <div class="result-total-badge" id="resultTotalBadge">Total: 18</div>
+          </div>
+          <button type="button" class="btn-insert-chat" onclick="sendDiceResultToChat()">
+            💬 Inserir Resultado na Conversa
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="dice_engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste Arena 3D de Dados D&D 2024</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0a0812;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #f59e0b;
+      margin-bottom: 8px;
+    }
+    .tray-box {
+      width: 760px;
+      height: 420px;
+      background: #110d1a;
+      border: 3px solid #b45309;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .controls {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      background: linear-gradient(135deg, #78350f, #b45309);
+      color: #fff;
+      border: 1px solid #f59e0b;
+      padding: 10px 18px;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.2s;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+    #resultBox {
+      margin-top: 16px;
+      font-size: 20px;
+      color: #fef08a;
+      font-weight: 600;
+      min-height: 32px;
+    }
+  </style>
+</head>
+<body>
+  <h1>D&D 2024 — Nova Arena Física 3D</h1>
+  <div class="tray-box">
+    <canvas id="testCanvas"></canvas>
+  </div>
+
+  <div class="controls">
+    <button onclick="rollPreset([20])">🎲 Rolar 1d20</button>
+    <button onclick="rollPreset([20, 20])">🎲 2d20 (Vantagem)</button>
+    <button onclick="rollPreset([6, 6, 6])">🔥 3d6 (Fogo)</button>
+    <button onclick="rollPreset([8, 8])">⚡ 2d8</button>
+    <button onclick="rollPreset([4, 6, 8, 10, 12, 20, 100])">👑 Todos os Dados (d4..d100)</button>
+  </div>
+
+  <div id="resultBox">Aguardando rolagem...</div>
+
+  <script src="dice_engine.js"></script>
+  <script>
+    const canvas = document.getElementById('testCanvas');
+    const engine = new window.DicePhysicsEngine(canvas);
+    window.engine = engine;
+
+    function rollPreset(sidesList) {
+      document.getElementById('resultBox').textContent = 'Rolando dados físicos...';
+      const plan = sidesList.map(s => ({ sides: s }));
+      engine.roll(plan, (settled) => {
+        const str = settled.map(s => `d${s.sides}: ${s.targetVal}`).join(' | ');
+        const total = settled.reduce((acc, s) => acc + s.targetVal, 0);
+        document.getElementById('resultBox').innerHTML = `🏆 <strong>TOTAL: ${total}</strong> (${str})`;
+        window.rollCompleted = true;
+      });
+    }
+
+    // Auto-roll d20 on load after 300ms
+    setTimeout(() => {
+      rollPreset([20]);
+    }, 400);
+  </script>
+</body>
+</html>

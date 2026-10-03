@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Dice Box Auto</title>
+  <style>
+    body {
+      background: #0d0a14;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    #diceContainer {
+      width: 760px;
+      height: 440px;
+      background: #140d1a;
+      border: 2px solid #e5b869;
+      margin: 20px 0;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <h1>Teste @3d-dice/dice-box - D&D Gemstone Dice</h1>
+  <div id="diceContainer"></div>
+  <div id="result" style="font-size: 20px; color: #fde68a;">Carregando...</div>
+
+  <script type="module">
+    import DiceBox from "./lib/dice-box/dice-box.es.js";
+
+    const box = new DiceBox({
+      container: "#diceContainer",
+      assetPath: "/assets/dice-box/",
+      theme: "gemstone",
+      themeColor: "#f59e0b",
+      offscreen: false,
+      scale: 6
+    });
+
+    try {
+      await box.init();
+      document.getElementById('result').textContent = "Rolando 1d20 + 2d6 + 1d8...";
+      
+      box.onRollComplete = (results) => {
+        console.log("Roll results:", results);
+        document.getElementById('result').innerHTML = `🏆 <strong>TOTAL: ${results.value}</strong> | Dados: ${results.rollsArray.map(r => r.die + ': ' + r.value).join(', ')}`;
+        window.rollFinished = true;
+      };
+
+      box.roll("1d20+2d6+1d8+3");
+    } catch (e) {
+      console.error(e);
+      document.getElementById('result').textContent = "Erro: " + e.message;
+    }
+  </script>
+</body>
+</html>

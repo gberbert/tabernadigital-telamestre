@@ -1,0 +1,361 @@
+---
+title: "Índice de blocos de estatísticas"
+title_en: "Index of Stat Blocks"
+category: "Regras Básicas"
+source: "D&D 2024 Free Rules (Roll20 Compendium)"
+original_url: "https://roll20.net/compendium/dnd5e/Rules:Index of Stat Blocks?expansion=33335"
+---
+
+# Índice de blocos de estatísticas
+
+
+#### O que há de novo na versão 2025?
+
+Esta é a versão 2025 da quinta edição do *Manual dos Monstros*. Se você leu a versão de 2014, grande parte deste livro lhe parecerá familiar, já que as regras fundamentais e a variedade de monstros são as mesmas. Grande parte do livro contém elementos novos ou redesenhados, e os monstros aqui substituem versões de livros mais antigos. Aqui estão os destaques:
+
+**Mais monstros.** O número de monstros aumentou para mais de 500 blocos de estatísticas.
+
+**Novos monstros.** Dezenas de novos monstros, incluindo mais ameaças de alto nível, estão prontos para desafiar personagens de todos os níveis.
+
+**Regras refinadas.** Todos os blocos de estatísticas foram atualizados para facilitar o uso e equilibrar o jogo.
+
+** Blocos de estatísticas aprimorados. **O novo design e linguagem do bloco de estatísticas prioriza detalhes vitais durante o jogo.
+
+**Grupos versáteis.** Os personagens não-jogadores agora aparecem ao lado de outros monstros e podem representar indivíduos de qualquer espécie humanóide.
+
+**Organização aprimorada.** Os monstros agora são organizados em ordem alfabética por nome. Variações do mesmo monstro são agrupadas.
+
+**Listas Expandidas.** Listas de Monstros coleta e expande listas de detalhes de monstros que apareceram no *Guia do Mestre* de 2014.
+
+Cada monstro no *Manual dos Monstros* de 2014 aparece neste livro ou tem um substituto apropriado de CR detalhado em Conversões de Monstros.
+
+- Aboleth
+- Elemental do Ar
+- Armadura Animada
+- Espada Voadora Animada
+- Tapete Animado de Sufocamento
+- Ankheg
+- Assassino
+- Arbusto Desperto
+- Árvore Desperta
+- Bico de Machado
+- Sentinela Azer
+- Balor
+- Bandido
+- Capitão bandido
+- Diabo farpado
+- Basilisco
+- Diabo Barbudo
+- Behir
+- Berserker
+- Dragão Negro Wyrmling
+- Jovem Dragão Negro
+- Dragão Negro Adulto
+- Dragão Negro Antigo
+- Morcela
+- Cachorro Pisca
+- Dragonete Azul
+- Jovem Dragão Azul
+- Dragão Azul Adulto
+- Dragão Azul Antigo
+- Diabo Osso
+- Dragão de Latão Wyrmling
+- Dragão de Latão Jovem
+- Dragão de latão adulto
+- Dragão de Latão Antigo
+- Dragonete de Bronze
+- Dragão de Bronze Jovem
+- Dragão de Bronze Adulto
+- Dragão de Bronze Antigo
+- Perseguidor Bugbear
+- Guerreiro Bugbear
+- Bulette
+- Soldado Centauro
+- Diabo das Correntes
+- Quimera
+- Chuul
+- Golem de Argila
+- Capa
+- Gigante das Nuvens
+- Basilisco
+- Plebeu
+- Dragão de Cobre Wyrmling
+- Dragão de Cobre Jovem
+- Dragão de Cobre Adulto
+- Dragão de Cobre Antigo
+- Couatl
+- Enxame de Garras Rastejantes
+- Cultista
+- Fanático Cultista
+- Manto Negro
+- Cão da Morte
+- Deva
+- Djinni
+- Sósia
+- Tartaruga Dragão
+- Dretch
+- Drider
+- Druida (Druid)
+- Dríade
+- Elemental da Terra
+- Efreeti
+- Erínias
+- Ettercap
+- Ettin
+- Elemental do Fogo
+- Gigante de Fogo
+- Golem de Carne
+- Gigante de Gelo
+- Fungo Gritador
+- Fungo Violeta
+- Gárgula
+- Cubo Gelatina
+- Fantástico
+- Fantasma
+- Carniçal
+- Balbuciante tagarela
+- Glabrezu
+- Gladiador
+- Guerreiro Gnoll
+- Lacaio Goblin
+- Guerreiro Goblin
+- Chefe Goblin
+- Dragonete Dourado
+- Dragão Dourado Jovem
+- Dragão Dourado Adulto
+- Dragão Dourado Antigo
+- Górgona
+- Lodo Cinzento
+- Dragão Verde Wyrmling
+- Jovem Dragão Verde
+- Dragão Verde Adulto
+- Dragão Verde Antigo
+- Bruxa Verde
+- Grick
+- Grifo
+- Grimlock
+- Guardião Naga
+- Guarda
+- Capitão da Guarda
+- Meio Dragão
+- Harpia
+- Cão do Inferno
+- Hezrou
+- Gigante da Colina
+- Hipogrifo
+- Guerreiro Hobgoblin
+- Capitão Hobgoblin
+- Homúnculo
+- Diabo Chifrudo
+- Hidra
+- Diabo de Gelo
+- Diabrete
+- Íncubo
+- Perseguidor Invisível
+- Golem de Ferro
+- Cavaleiro
+- Guerreiro Kobold
+- Kraken
+- Lâmia
+- Lêmure
+- Lich
+- Mago
+- Arquimago
+- Magmin
+- Manticora
+- Marilith
+- Medusa
+- Poeira Mephit
+- Mephit de gelo
+- Magma Mephit
+- Vapor Mephit
+- Escaramuçador Tritão
+- Merrow
+- Imitar
+- Minotauro de Baphomet
+- Múmia
+- Senhor múmia
+- Nalfeshnee
+- Bruxa da Noite
+- Pesadelo
+- Nobre
+- Geléia Ocre
+- Ogro
+- Oni
+- Otyugh
+- Urso Coruja
+- Pégaso
+- Aranha Fase
+- Pirata
+- Capitão Pirata
+- Demônio do Poço
+- Planetário
+- Sacerdote Acólito
+- Padre
+- Pseudodragão
+- Verme Roxo
+- Quase
+- Rakshasa
+- Dragão Vermelho Wyrmling
+- Jovem Dragão Vermelho
+- Dragão Vermelho Adulto
+- Dragão Vermelho Antigo
+- Remorház
+- Roca
+- Roper
+- Monstro da Ferrugem
+- Guerreiro Sahuagin
+- Salamandra
+- Sátiro
+- Escoteiro
+- Bruxa do Mar
+- Sombra
+- Monte Cambaleante
+- Guardião do Escudo
+- Dragão de Prata Wyrmling
+- Jovem Dragão Prateado
+- Dragão Prateado Adulto
+- Dragão Prateado Antigo
+- Esqueleto
+- Esqueleto de Cavalo de Guerra
+- Esqueleto do Minotauro
+- Solar
+- Espectro
+- Esfinge da Maravilha
+- Esfinge do Lore
+- Esfinge do Valor
+- Espírito Naga
+- Sprite
+- Espião
+- Mexa
+- Gigante de Pedra
+- Golem de Pedra
+- Gigante da Tempestade
+- Súcubo
+- Tarrasque
+- Difícil
+- Chefe durão
+- Ente
+- troll
+- Membro de troll
+- Unicórnio
+- Familiar Vampiro
+- Cria de Vampiros
+- Vampiro
+- Vrock
+- Infantaria Guerreira
+- Veterano Guerreiro
+- Elemental da Água
+- Homem Urso
+- Homem-javali
+- Homem-rato
+- Homem Tigre
+- Lobisomem
+- Dragão Branco Wyrmling
+- Jovem Dragão Branco
+- Dragão Branco Adulto
+- Dragão Branco Antigo
+- Pessoa
+- Will-o'-Wisp
+- Lobo de inverno
+- Worg
+- Espectro
+- Wyvern
+- Xorn
+- Zumbi
+- Ogro Zumbi
+- Alossauro
+- Anquilossauro
+- Macaco
+- Arquelonte
+- Babuíno
+- Texugo
+- Bastão
+- Urso Negro
+- Falcão de Sangue
+- Javali
+- Urso Pardo
+- Camelo
+- Gato
+- Cobra Constritora
+- Caranguejo
+- Crocodilo
+- Cervo
+- Lobo Terrível
+- Cavalo de tração
+- Águia
+- Elefante
+- Alce
+- Cobra Voadora
+- Sapo
+- Macaco Gigante
+- Texugo Gigante
+- Morcego Gigante
+- Javali Gigante
+- Centopéia Gigante
+- Cobra Constritora Gigante
+- Caranguejo Gigante
+- Crocodilo Gigante
+- Águia Gigante
+- Alce Gigante
+- Besouro de Fogo Gigante
+- Sapo Gigante
+- Cabra Gigante
+- Hiena Gigante
+- Lagarto Gigante
+- Polvo Gigante
+- Coruja Gigante
+- Rato Gigante
+- Escorpião Gigante
+- Cavalo Marinho Gigante
+- Tubarão Gigante
+- Aranha Gigante
+- Sapo Gigante
+- Cobra Venenosa Gigante
+- Abutre Gigante
+- Vespa Gigante
+- Doninha Gigante
+- Aranha Lobo Gigante
+- Cabra
+- Falcão
+- Hipopótamo
+- Tubarão Caçador
+- Hiena
+- Chacal
+- Orca
+- Leão
+- Lagarto
+- Mamute
+- Mastim
+- Mula
+- Polvo
+- Coruja
+- Pantera
+- Piranha
+- Plesiossauro
+- Urso polar
+- Pônei
+- Pteranodonte
+- Rato
+- Corvo
+- Tubarão de recife
+- Rinoceronte
+- Andar a cavalo
+- Tigre Dente de Sabre
+- Escorpião
+- Cavalo marinho
+- Aranha
+- Enxame de Morcegos
+- Enxame de insetos
+- Enxame de Piranhas
+- Enxame de Ratos
+- Enxame de Corvos
+- Enxame de Cobras Venenosas
+- Tigre
+- Tricerátopo
+- Tiranossauro Rex
+- Cobra Venenosa
+- Abutre
+- Cavalo de Guerra
+- Doninha
+- Lobo

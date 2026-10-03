@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Dice Box</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    #diceContainer {
+      width: 600px;
+      height: 400px;
+      background: #1a1a2e;
+      border: 2px solid #e5b869;
+      margin: 20px 0;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <h1>Teste @3d-dice/dice-box</h1>
+  <div id="diceContainer"></div>
+  <button id="rollBtn">Rolar 1d20</button>
+  <button id="rollMultiBtn">Rolar 2d6 + 1d8 + 3</button>
+  <div id="result">Aguardando...</div>
+
+  <script type="module">
+    import DiceBox from "./lib/dice-box/dice-box.es.js";
+
+    const box = new DiceBox({
+      container: "#diceContainer",
+      assetPath: "/assets/dice-box/",
+      theme: "gemstone",
+      themeColor: "#f59e0b",
+      offscreen: false,
+      scale: 6
+    });
+
+    try {
+      await box.init();
+      document.getElementById('result').textContent = "DiceBox Inicializado com Sucesso!";
+
+      document.getElementById('rollBtn').onclick = () => {
+        document.getElementById('result').textContent = "Rolando 1d20...";
+        box.roll("1d20");
+      };
+
+      document.getElementById('rollMultiBtn').onclick = () => {
+        document.getElementById('result').textContent = "Rolando 2d6 + 1d8 + 3...";
+        box.roll("2d6+1d8+3");
+      };
+
+      box.onRollComplete = (results) => {
+        console.log("Roll results:", results);
+        document.getElementById('result').innerHTML = `<strong>Resultado Final:</strong> ${results.value} <br>Detalhamento: ${JSON.stringify(results.rollsArray)}`;
+      };
+    } catch (e) {
+      console.error(e);
+      document.getElementById('result').textContent = "Erro: " + e.message;
+    }
+  </script>
+</body>
+</html>
